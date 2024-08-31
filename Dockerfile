@@ -4,6 +4,7 @@ FROM debian:bullseye-slim
 WORKDIR /usr/src/myapp
 COPY . .
 CMD ["sh", "./build.sh"]
-FROM nginx:alpine
+FROM nginx
+WORKDIR /usr/src/myapp
 COPY ./out /usr/share/nginx/html
 
