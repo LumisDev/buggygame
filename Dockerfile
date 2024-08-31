@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
-RUN cargo install wasm-pack 
-RUN sh ./build.sh
+FROM rust:1.67
+RUN cargo install wasm-pack
+FROM debian:bullseye-slim
+WORKDIR /usr/src/myapp
+COPY . .
+CMD ["sh", "./build.sh"]
+
